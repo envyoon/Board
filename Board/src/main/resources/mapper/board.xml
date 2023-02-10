@@ -5,6 +5,7 @@
 	
 <mapper namespace="board.board.mapper.BoardMapper">
 
+	<!-- 게시글 가져오기 -->
 	<select id="selectBoardList" resultType="board.board.dto.BoardDto">
 		select board_idx, title, hit_cnt, created_datetime
 		from stsboot.t_board
@@ -12,5 +13,44 @@
 		order by board_idx DESC
 	</select>
 
-
+	<!-- 게시글 만들기 -->
+	<insert id="insertBoard" parameterType="board.board.dto.BoardDto">
+		INSERT INTO stsboot.t_board (BOARD_IDX, title, contents, CREATOR_ID, CREATED_DATETIME)
+		VALUES (board_idx_seq.NEXTVAL, #{title}, #{contents}, 'admin' , sysdate)
+	</insert>
+	
+	<!-- 조회수 증가시키기 -->
+	<update id="updateHitCount" parameterType="int">
+		UPDATE stsboot.t_board 
+		SET hit_cnt = hit_cnt + 1
+		WHERE board_idx = #{boardIdx}
+	</update>
+	
+	<!-- 상세게시글 가져오기 -->
+	<select id="selectBoardDetail" parameterType="int" resultType="board.board.dto.BoardDto">
+		SELECT board_idx, title, contents, hit_cnt, created_datetime, creator_id
+		FROM stsboot.t_board
+		WHERE board_idx = #{boardIdx}
+		AND deleted_yn = 'N'
+	</select>
+	
+	<!-- 게시글 업데이트 -->
+	<update id="updateBoard" parameterType="board.board.dto.BoardDto">
+		UPDATE stsboot.t_board
+		SET title = #{title},
+			contents = #{contents},
+			updated_datetime = sysdate,
+			updater_id = 'admin'
+		WHERE board_idx = #{boardIdx}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard" parameterType="int">
+		UPDATE t_board 
+		SET	deleted_yn = 'Y',
+			updated_datetime = sysdate,
+			updater_id = 'admin'
+		WHERE 
+			board_idx = #{boardIdx}
+	</update>
 </mapper>
