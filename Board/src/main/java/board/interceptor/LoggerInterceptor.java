@@ -32,13 +32,5 @@ public class LoggerInterceptor implements HandlerInterceptor{
 		log.debug("======================================           END          ======================================\n");
 	}
 
-//	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//		log.debug("======================================          START         ======================================");
-//		log.debug(" Request URI \t:  " + request.getRequestURI());
-//		return preHandle(request, response, handler);
-//	}
-//	
-//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-//		log.debug("======================================           END          ======================================\n");
-//	}
+
 }
