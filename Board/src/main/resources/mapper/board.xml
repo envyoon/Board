@@ -14,9 +14,19 @@
 	</select>
 
 	<!-- 게시글 만들기 -->
-	<insert id="insertBoard" parameterType="board.board.dto.BoardDto">
+	<insert id="insertBoard" parameterType="board.board.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardIdx">
 		INSERT INTO stsboot.t_board (BOARD_IDX, title, contents, CREATOR_ID, CREATED_DATETIME)
 		VALUES (board_idx_seq.NEXTVAL, #{title}, #{contents}, 'admin' , sysdate)
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.boardIdx},
+				#{item.originalFileName},
+				#{item.storedFilePath},
+				#{item.fileSize},
+				'admin',
+				sysdate
+			)
+		</foreach>
 	</insert>
 	
 	<!-- 조회수 증가시키기 -->

@@ -2,8 +2,10 @@ package board.board.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import board.board.dto.BoardDto;
 import board.board.mapper.BoardMapper;
@@ -22,7 +24,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	//게시글 제작하는 것
 	@Override
-	public void insertBoard(BoardDto board) throws Exception{
+	public void insertBoard(BoardDto board) throws Exception {
 		boardMapper.insertBoard(board);
 	}
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import board.board.dto.BoardDto;
+import board.board.dto.BoardFileDto;
 
 @Mapper
 public interface BoardMapper {
@@ -26,5 +27,6 @@ public interface BoardMapper {
 	
 	//게시글 삭제
 	void deleteBoard(int boardIdx) throws Exception;
+	
 	
 }
