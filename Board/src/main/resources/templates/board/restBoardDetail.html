@@ -46,7 +46,7 @@
 			<input type="hidden" id="method" name="_method"/>
 		</form>
 		
-		
+				
 		<a href="#this" id="list" class="btn">목록으로</a>
 		<a href="#this" id="edit" class="btn">수정하기</a>
 		<a href="#this" id="delete" class="btn">삭제하기</a>
@@ -57,7 +57,7 @@
 		$(document).ready(function(){
 			/* 여기 */
 			var boardIdx = $("#boardIdx").val();
-			
+			console.log(boardIdx);
 			$("#list").on("click", function(){
 				/* 여기 */
 				location.href = "/board/";
