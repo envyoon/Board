@@ -24,4 +24,4 @@ spring.jpa.database=oracle
 spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
 
 #swagger
-spring.mvc.pathmatch.matching-strategy= ANT_PATH_MATCHER
+spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
